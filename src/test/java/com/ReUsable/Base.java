@@ -1,15 +1,13 @@
 package com.ReUsable;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.concurrent.TimeUnit;
 import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
+
 
 
 public class Base {
@@ -32,7 +30,7 @@ public class Base {
         return driver.getTitle();
     }
 
-   @AfterTest
+   //@AfterTest
     public static void tearDown() {
         driver.quit();
     }

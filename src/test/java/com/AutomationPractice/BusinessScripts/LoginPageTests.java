@@ -3,21 +3,35 @@ package com.AutomationPractice.BusinessScripts;
 import com.ReUsable.ReUsableMethods;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import com.ReUsable.Locators;
 
 public class LoginPageTests extends ReUsableMethods{
 
 
+    Locators LC = new Locators();
     public static String expectedtitle;
 
+//    @BeforeClass
+//    void addToCart(){
+//        browserSetUpWithUrl();
+//        hooverOver(By.xpath("//*[@id=\'block_top_menu\']/ul/li[2]/a"));
+//        ClickHyperLink(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[2]/ul/li[3]/a"));
+//    }
+//
+//    @AfterClass
+//    void shutdown(){
+//        tearDown();
+//    }
 
-    @Test
+
+
+
 void loginAndCompleteCheckOut() {
 
-    //browserSetUpWithUrl("http://automationpractice.com/index.php");
-
-    ClickHyperLink(By.xpath("//*[@class = 'header_user_info']"));
+    ClickHyperLink(By.xpath(LC.LOGIN_BUTTON));
     expectedtitle = "Login - My Store";
     Assert.assertEquals(pageTitleVerification(), expectedtitle);
     enterValuesInTextFeilds(By.id("email_create"), "TestNg@gmail.com");
@@ -36,21 +50,21 @@ void loginAndCompleteCheckOut() {
     enterValuesInTextFeilds(By.id("email"), "Testmail9845@gmail.com");
     enterValuesInTextFeilds(By.id("passwd"), "Pass123");
     clickButton(By.id("SubmitLogin"));
-    scrollUpOrDown(By.xpath("//*[@id=\'center_column\']/form/p/button/span"));
+    scrollUpOrDownByObjectVisibility(By.xpath("//*[@id=\'center_column\']/form/p/button/span"));
     clickButton(By.xpath("//*[@id=\'center_column\']/form/p/button/span"));
     clickButton(By.id("uniform-cgv"));
     clickButton(By.xpath("//*[@id=\"form\"]/p/button/span"));
-    scrollUpOrDown(By.xpath("//*[@id=\"HOOK_PAYMENT\"]/div[1]/div/p/a"));
+    scrollUpOrDownByObjectVisibility(By.xpath("//*[@id=\"HOOK_PAYMENT\"]/div[1]/div/p/a"));
     clickButton(By.xpath("//*[@id=\"HOOK_PAYMENT\"]/div[1]/div/p/a"));
     clickButton(By.xpath("//*[@id=\"cart_navigation\"]/button/span"));
     ClickHyperLink(By.id("header_logo"));
     hooverOver(By.xpath("//*[@id=\'block_top_menu\']/ul/li[2]/a"));
     ClickHyperLink(By.xpath("//*[@id=\'block_top_menu\']/ul/li[2]/ul/li[2]/a"));
-    scrollUpOrDown(By.xpath("//*[@id=\'center_column\']/ul/li/div/div[1]/div/a[2]/span"));
+    scrollUpOrDownByObjectVisibility(By.xpath("//*[@id=\'center_column\']/ul/li/div/div[1]/div/a[2]/span"));
     ClickHyperLink(By.xpath("//*[@id=\'color_43\']"));
 
 }
-        @Test
+      //  @Test
        void LoginVerification(){
             //sbrowserSetUpWithUrl("http://automationpractice.com/index.php");
             ClickHyperLink(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a"));
@@ -65,8 +79,29 @@ void loginAndCompleteCheckOut() {
         Assert.assertEquals(getErrorMessage(By.xpath("//*[text()='An email address required.']")),"An email address required.");
     }
 
+    @Test
+    void addToCart() {
+        ClickHyperLink(By.xpath("//*[@class ='logo img-responsive']"));
+        hooverOver(By.xpath("//*[@id='block_top_menu']/ul/li[1]/ul/li[2]/a)"));
+               // "////a[contains(.,'Dresses')]"));
+        //ClickHyperLink(By.linkText("Summer Dresses"));
+        ClickHyperLink(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[2]/ul/li[3]/a"));
+        //scrollUpOrDownByPixels();
 
-}
+        hooverOver(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/div/div[1]/div/a[1]/img"));
+        ClickHyperLink(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/div/div[2]/div[2]/a[1]"));
+        ClickHyperLink(By.linkText("Proceed to checkout"));
+        ClickHyperLink(By.linkText("Proceed to checkout"));
+        // waitTillLoad();
+
+    }
+
+
+
+    }
+
+
+
 
 
 //*[@class = 'alert alert-danger']//following-sibling::ol//following-sibling::li

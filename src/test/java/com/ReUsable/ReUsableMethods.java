@@ -9,12 +9,14 @@ import org.openqa.selenium.support.ui.Select;
 
 
 import java.security.PublicKey;
+import java.util.concurrent.TimeUnit;
 
 public class ReUsableMethods extends Base {
 
     public static Actions Action;
     public static WebElement menuOption,DropDown,Text;
     public static Select select;
+    public static JavascriptExecutor js = (JavascriptExecutor) driver;
 
 
     public static void ClickHyperLink(By locatorname){
@@ -57,15 +59,26 @@ public class ReUsableMethods extends Base {
         driver.switchTo().alert().accept();
     }
 
-    public static void scrollUpOrDown(By locatorname){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+    public static void scrollUpOrDownByObjectVisibility(By locatorname){
+
        Text = driver.findElement(locatorname);
+        System.out.println(Text);
         js.executeScript("arguments[0].scrollIntoView();", Text);
+    }
+
+    public static void scrollUpOrDownByPixels(){
+        js.executeScript("window.scrollBy(0,600)");
+
     }
 
     public static String getErrorMessage(By locatorname){
         System.out.println(driver.findElement(locatorname).getText());
         return driver.findElement(locatorname).getText();
+    }
+
+    public static void waitTillLoad(){
+        driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
+
     }
 
 
