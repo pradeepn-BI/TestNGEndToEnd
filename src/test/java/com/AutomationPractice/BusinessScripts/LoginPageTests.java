@@ -39,7 +39,7 @@ void loginAndCompleteCheckOut() {
     //getDisplayedMessage(By.xpath("//*[@id=\'create_account_error\']/ol/li/text()"));
     // Assert.assertEquals(ActualResult,"1. An account using this email address has already been registered. Please enter a valid password or request a new one.");
 
-    hooverOver(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[1]/a"));
+    hooverOver(By.linkText("Dresses"));
     ClickHyperLink(By.linkText("Casual Dresses"));
     ClickHyperLink(By.xpath("//*[@id=\"center_column\"]/ul/li/div/div[2]/h5/a"));
      clickButton(By.id("uniform-group_1"));
