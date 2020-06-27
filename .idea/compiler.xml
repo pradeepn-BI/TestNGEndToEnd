@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="TestNG" />
         <module name="FirstTestNGEndToEnd" />
+        <module name="TestNGEndToEnd" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="9" />

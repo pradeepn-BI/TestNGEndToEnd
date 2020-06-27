@@ -1,5 +1,5 @@
 package com.ReUsable;
-import org.junit.Assert;
+import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -18,6 +18,7 @@ public class Base {
         WebDriverManager.getInstance(CHROME).setup();
         driver = new ChromeDriver();
         driver.navigate().to("http://automationpractice.com/index.php");
+        //driver.navigate().to("https://www.ebay.co.uk/");
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
