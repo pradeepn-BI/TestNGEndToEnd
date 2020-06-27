@@ -10,23 +10,7 @@ public class LoginPageTests extends ReUsableMethods{
 
 
     Locators LC = new Locators();
-
-
-//    @BeforeClass
-//    void addToCart(){
-//        browserSetUpWithUrl();
-//        hooverOver(By.xpath("//*[@id=\'block_top_menu\']/ul/li[2]/a"));
-//        ClickHyperLink(By.xpath("//*[@id=\"block_top_menu\"]/ul/li[2]/ul/li[3]/a"));
-//    }
-//
-//    @AfterClass
-//    void shutdown(){
-//        tearDown();
-//    }
-
-
 //@Test
-
 void verifyLoginWithValidDetails() {
     ClickHyperLink(By.xpath(LC.SIGN_IN));
     enterValuesInTextFeilds(By.id("email"),"Testmail9845@gmail.com");
@@ -75,17 +59,9 @@ void verifyLoginWithInvalidDetails() {
         hooverOver(By.xpath(LC.EVEDRESS));
         clickButton(By.xpath("//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[1]/span"));
         clickButton(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span"));
-        //waitTillLoad();
-
         scrollUpOrDownByObjectVisibility();
         clickButton(By.xpath("Proceed to checkout"));
-        //scrollUpOrDownByPixels();
 
-//        hooverOver(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/div/div[1]/div/a[1]/img"));
-//        ClickHyperLink(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/div/div[2]/div[2]/a[1]"));
-//        ClickHyperLink(By.linkText("Proceed to checkout"));
-//        ClickHyperLink(By.linkText("Proceed to checkout"));
-        // waitTillLoad();
 
     }
 
