@@ -9,24 +9,24 @@ import org.testng.annotations.*;
 public class LoginPageTests extends ReUsableMethods{
 
 
-    Locators LC = new Locators();
+    //Locators LC = new Locators();
 //@Test
 void verifyLoginWithValidDetails() {
-    ClickHyperLink(By.xpath(LC.SIGN_IN));
+    ClickHyperLink(By.xpath(Locators.SIGN_IN));
     enterValuesInTextFeilds(By.id("email"),"Testmail9845@gmail.com");
     enterValuesInTextFeilds(By.id("passwd"), "Pass123");
     clickButton(By.id("SubmitLogin"));
 }
 //@Test
 void verifyLoginWithInvalidDetails() {
-    ClickHyperLink(By.xpath(LC.SIGN_IN));
+    ClickHyperLink(By.xpath(Locators.SIGN_IN));
     enterValuesInTextFeilds(By.id("email_create"), "TestNg@gmail.com");
     clickButton(By.id("SubmitCreate"));
-    Assert.assertEquals(getDisplayedMessage(By.xpath(LC.INVALID_EMAIL_ERROR)), LC.exp_invalid_email_error);
+    Assert.assertEquals(getDisplayedMessage(By.xpath(Locators.INVALID_EMAIL_ERROR)), Locators.exp_invalid_email_error);
     enterValuesInTextFeilds(By.id("email"), "Testnggmail.com");
     enterValuesInTextFeilds(By.id("passwd"), "Pass123");
     clickButton(By.id("SubmitLogin"));
-    Assert.assertEquals(getDisplayedMessage(By.xpath("//li[contains(text(),'Invalid email address.')]")), LC.Actual_Error_Invalid_emailId);
+    Assert.assertEquals(getDisplayedMessage(By.xpath("//li[contains(text(),'Invalid email address.')]")), Locators.Actual_Error_Invalid_emailId);
     clearTextFeilds(By.id("email"));
     clearTextFeilds(By.id("passwd"));
     enterValuesInTextFeilds(By.id("email"), "Testmail9845@gmail.com");
@@ -54,9 +54,9 @@ void verifyLoginWithInvalidDetails() {
     @Test
     void addToCart() {
         ClickHyperLink(By.xpath("//*[@class ='logo img-responsive']"));
-        hooverOver(By.xpath(LC.DRESSES));
-        ClickHyperLink(By.xpath(LC.EVENING_DRESSES));
-        hooverOver(By.xpath(LC.EVEDRESS));
+        hooverOver(By.xpath(Locators.DRESSES));
+        ClickHyperLink(By.xpath(Locators.EVENING_DRESSES));
+        hooverOver(By.xpath(Locators.EVEDRESS));
         clickButton(By.xpath("//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[1]/span"));
         clickButton(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span"));
         scrollUpOrDownByObjectVisibility();
