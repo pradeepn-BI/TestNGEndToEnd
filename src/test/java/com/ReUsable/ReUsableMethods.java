@@ -5,16 +5,20 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ReUsableMethods extends Base {
 
     public static Actions Action;
     public static WebElement menuOption, DropDown, Text;
     public static Select select;
+    public static List<WebElement> autosuggestionslist;
     public static JavascriptExecutor js = (JavascriptExecutor) driver;
+
 
 
     public static void ClickHyperLink(By locatorname) {
@@ -79,16 +83,22 @@ public class ReUsableMethods extends Base {
 
     }
 
-    public static void selectInAutoSuggestions(By locatorname,String SearchText) {
+    public static void selectInAutoSuggestions(By locatorname,String SearchText, String attributename) {
         List<WebElement> autosuggestionslist = driver.findElements(locatorname);
-        for (WebElement suggestion : autosuggestionslist) {
-            System.out.println(suggestion.getText());
-            do {suggestion.click();
-            }while (suggestion.getText()!=SearchText);
+             for(int i=0;i<autosuggestionslist.size();i++) {
+                 if(autosuggestionslist.get(i).getAttribute(attributename).equals(SearchText)) {
+                     ((JavascriptExecutor) driver).executeScript("arguments[0].click()",
+                             autosuggestionslist.get(i));
+                     break;
+                 }
+             }
+            
+
+            }
 
 
-        }
-    }
+
+
 
     public static void clearTextFeilds(By locatorname){
         WebElement toClear = driver.findElement(locatorname);
