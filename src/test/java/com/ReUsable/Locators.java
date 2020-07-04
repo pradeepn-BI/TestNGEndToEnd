@@ -12,4 +12,5 @@ public class Locators extends Base {
     public static String DRESSES = "//*[@id=\"block_top_menu\"]/ul/li[2]/a";
     public static String EVENING_DRESSES = "//*[@id=\"block_top_menu\"]/ul/li[2]/ul/li[2]/a";
     public static String EVEDRESS = "//*[@id='center_column']/ul/li/div/div[1]/div/a[1]/img";
+    public static String SUMMERDRESS = "//*[@id='block_top_menu']/ul/li[2]/ul/li[3]/a";
 }

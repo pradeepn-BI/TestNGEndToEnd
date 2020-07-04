@@ -51,18 +51,40 @@ void verifyLoginWithInvalidDetails() {
     Assert.assertEquals(getDisplayedMessage(By.xpath("//li[contains (text(), 'An email address required.')]")), "An email address required.");
     //ClickHyperLink(By.linkText("Recover your forgotten password"));
 }
-    @Test
-    void addToCart() {
+
+    void addToCartByHover() {
         ClickHyperLink(By.xpath("//*[@class ='logo img-responsive']"));
         hooverOver(By.xpath(Locators.DRESSES));
         ClickHyperLink(By.xpath(Locators.EVENING_DRESSES));
         hooverOver(By.xpath(Locators.EVEDRESS));
         clickButton(By.xpath("//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[1]/span"));
         clickButton(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span"));
-        scrollUpOrDownByObjectVisibility();
-        clickButton(By.xpath("Proceed to checkout"));
+        //scrollUpOrDownByObjectVisibility();
+        clickButton(By.linkText("Proceed to checkout"));
+    }
+    //@Test
+    void addToCartByColour(){
+        ClickHyperLink(By.xpath("//*[@class ='logo img-responsive']"));
+        hooverOver(By.xpath(Locators.DRESSES));
+        ClickHyperLink(By.xpath(Locators.SUMMERDRESS));
+        hooverOver(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/div/div[1]/div/a[1]/img"));
+        ClickHyperLink(By.xpath("//*[@id=\"color_20\"]"));
+        //scrollUpOrDownByObjectVisibility(By.xpath("//*[@id=\'add_to_cart\']/button/span"));
+        clickButton(By.xpath("//*[@id=\'add_to_cart\']/button/span"));
+    }
 
-
+    @Test
+    void addToCartFromMore(){
+        ClickHyperLink(By.xpath("//*[@class ='logo img-responsive']"));
+        hooverOver(By.xpath(Locators.DRESSES));
+        ClickHyperLink(By.xpath(Locators.SUMMERDRESS));
+        hooverOver(By.xpath("//*[@id=\"center_column\"]/ul/li[1]/div/div[1]/div/a[1]/img"));
+        clickButton(By.xpath("//*[@id='center_column']/ul/li[1]/div/div[2]/div[2]/a[2]/span"));
+        selectFromDropDown(By.id("group_1"),"L");
+        clickButton(By.id("color_13"));
+        clickButton(By.id("add_to_cart"));
+        ClickHyperLink(By.linkText("Proceed to checkout"));
+        clickButton(By.xpath("//*[@id=\"center_column\"]/p[2]/a[1]"));
     }
 
 

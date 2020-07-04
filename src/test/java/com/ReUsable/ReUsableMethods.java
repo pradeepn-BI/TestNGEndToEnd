@@ -57,9 +57,9 @@ public class ReUsableMethods extends Base {
         driver.switchTo().alert().accept();
     }
 
-    public static void scrollUpOrDownByObjectVisibility() {
+    public static void scrollUpOrDownByObjectVisibility(By locatorname) {
 
-        Text = driver.findElement(By.xpath("//*[@id=\"center_column\"]/p[2]/a[1]"));
+        Text = driver.findElement(locatorname);
         js.executeScript("arguments[0].scrollIntoView(true);", Text);
         System.out.println(Text);
     }
@@ -79,15 +79,12 @@ public class ReUsableMethods extends Base {
 
     }
 
-    public static void selectInAutoSuggestions(By locatorname,String SearchText) throws InterruptedException {
+    public static void selectInAutoSuggestions(By locatorname,String SearchText) {
         List<WebElement> autosuggestionslist = driver.findElements(locatorname);
         for (WebElement suggestion : autosuggestionslist) {
-            if (suggestion.getText().equalsIgnoreCase(SearchText)) {
-                suggestion.click();
-                break;
-            }
-
-
+            System.out.println(suggestion.getText());
+            do {suggestion.click();
+            }while (suggestion.getText()!=SearchText);
 
 
         }

@@ -17,8 +17,8 @@ public class Base {
     public static void browserSetUpWithUrl() {
         WebDriverManager.getInstance(CHROME).setup();
         driver = new ChromeDriver();
-        driver.navigate().to("http://automationpractice.com/index.php");
-        //driver.navigate().to("https://www.ebay.co.uk/");
+        //driver.navigate().to("http://automationpractice.com/index.php");
+        driver.navigate().to("https://www.ebay.co.uk/");
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
