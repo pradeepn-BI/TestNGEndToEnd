@@ -61,11 +61,10 @@ public class ReUsableMethods extends Base {
         driver.switchTo().alert().accept();
     }
 
-    public static void scrollUpOrDownByObjectVisibility(By locatorname) {
-
-        Text = driver.findElement(locatorname);
-        js.executeScript("arguments[0].scrollIntoView(true);", Text);
-        System.out.println(Text);
+    public static void scrollToElement(By locatorname) {
+            Text = driver.findElement(locatorname);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Text);
+            System.out.println(Text);
     }
 
     public static void scrollUpOrDownByPixels() {
@@ -73,9 +72,9 @@ public class ReUsableMethods extends Base {
 
     }
 
-    public static void getErrorMessage(By locatorname) {
-        //System.out.println(driver.findElement(locatorname).getText());
-        //return driver.findElement(locatorname).getText();
+    public static String getElementText(By locatorname) {
+        return driver.findElement(locatorname).getText();
+
     }
 
     public static void waitTillLoad() {
@@ -86,6 +85,7 @@ public class ReUsableMethods extends Base {
     public static void selectInAutoSuggestions(By locatorname,String SearchText, String attributename) {
         List<WebElement> autosuggestionslist = driver.findElements(locatorname);
              for(int i=0;i<autosuggestionslist.size();i++) {
+                 //if(autosuggestionslist.get(i).getAttribute(attributename).equals(SearchText)) {
                  if(autosuggestionslist.get(i).getAttribute(attributename).equals(SearchText)) {
                      ((JavascriptExecutor) driver).executeScript("arguments[0].click()",
                              autosuggestionslist.get(i));
@@ -95,9 +95,6 @@ public class ReUsableMethods extends Base {
             
 
             }
-
-
-
 
 
     public static void clearTextFeilds(By locatorname){

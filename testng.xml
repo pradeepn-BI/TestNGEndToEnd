@@ -4,7 +4,7 @@
     <test verbose="2" preserve-order="true" name="F:/Java/FirstTestNGEndToEnd">
 
         <classes>
-            <class name="com.AutomationPractice.BusinessScripts.SelectAutoSuggestions">
+            <class name="com.AutomationPractice.BusinessScripts.FlipKart">
 
             </class>
         </classes>
