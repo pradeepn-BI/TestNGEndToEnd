@@ -64,7 +64,7 @@ public class ReUsableMethods extends Base {
     public static void scrollToElement(By locatorname) {
             Text = driver.findElement(locatorname);
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Text);
-            System.out.println(Text);
+            System.out.println(Text.getText());
     }
 
     public static void scrollUpOrDownByPixels() {
@@ -72,10 +72,30 @@ public class ReUsableMethods extends Base {
 
     }
 
-    public static String getElementText(By locatorname) {
-        return driver.findElement(locatorname).getText();
+     public static void searchForElementAndClick(By locatorname,String SearchText){
+       List<WebElement> searches = driver.findElements(locatorname);
+       for (int i = 0; i < searches.size() ; i++) {
+           if (searches.get(i).getText().contains(SearchText)) {
+               searches.get(i).click();
+                break;
+           }
+          else{
+              waitTillLoad();
+               try {
+               WebElement needtoclick = driver.findElement(By.xpath("//span[contains(text(),'Next')]"));
+               ((JavascriptExecutor) driver).executeScript("arguments[0].click()", needtoclick);
+               System.out.println(searches.get(i).getText());
+               }
+               catch(org.openqa.selenium.StaleElementReferenceException ex)
+               {    waitTillLoad();
+                   WebElement needtoclick = driver.findElement(By.xpath("//span[contains(text(),'Next')]"));
+                   ((JavascriptExecutor) driver).executeScript("arguments[0].click()", needtoclick);
 
-    }
+               }
+           }
+
+       }
+   }
 
     public static void waitTillLoad() {
         driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
