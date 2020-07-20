@@ -1,12 +1,11 @@
 package com.ReUsable;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -73,29 +72,34 @@ public class ReUsableMethods extends Base {
     }
 
      public static void searchForElementAndClick(By locatorname,String SearchText){
-       List<WebElement> searches = driver.findElements(locatorname);
+         List<WebElement> searches = new ArrayList<WebElement>();
+
+              searches = driver.findElements(locatorname);
+
+
        for (int i = 0; i < searches.size() ; i++) {
-           if (searches.get(i).getText().contains(SearchText)) {
-               searches.get(i).click();
-                break;
-           }
-          else{
-              waitTillLoad();
-               try {
-               WebElement needtoclick = driver.findElement(By.xpath("//span[contains(text(),'Next')]"));
-               ((JavascriptExecutor) driver).executeScript("arguments[0].click()", needtoclick);
-               System.out.println(searches.get(i).getText());
-               }
-               catch(org.openqa.selenium.StaleElementReferenceException ex)
-               {    waitTillLoad();
-                   WebElement needtoclick = driver.findElement(By.xpath("//span[contains(text(),'Next')]"));
-                   ((JavascriptExecutor) driver).executeScript("arguments[0].click()", needtoclick);
+                
+               if (searches.get(i).getText().contains(SearchText)) {
+                   searches.get(i).click();
+                   break;
+               } else {
+                   waitTillLoad();
+                   try {
+                       searches = driver.findElements(locatorname);
+                       List<WebElement> needtoclick = driver.findElements(By.cssSelector("nav a"));
+                       ((JavascriptExecutor) driver).executeScript("arguments[0].click()", needtoclick.get(i + 2));
+                   } catch (org.openqa.selenium.StaleElementReferenceException ex) {
+                       waitTillLoad();
+                       searches = driver.findElements(locatorname);
+                       List<WebElement> needtoclick = driver.findElements(By.cssSelector("nav a"));
+                       ((JavascriptExecutor) driver).executeScript("arguments[0].click()", needtoclick.get(i + 2));
 
+                   }
                }
-           }
 
+           }
        }
-   }
+
 
     public static void waitTillLoad() {
         driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
