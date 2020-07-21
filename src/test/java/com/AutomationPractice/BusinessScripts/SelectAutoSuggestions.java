@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 
 public class SelectAutoSuggestions extends ReUsableMethods {
 
-    @Test
+    //@Test
     void selectautosuggestions() throws InterruptedException {
         enterValuesInTextFeilds(By.id("gh-ac"),"Bike");
         selectInAutoSuggestions(By.cssSelector(".ui-front li a"),"bike helmet","aria-label");

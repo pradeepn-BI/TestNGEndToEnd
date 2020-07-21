@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 
 public class FlipKart extends ReUsableMethods {
-    @Test
+   // @Test
     public static void SearchAndSelect() {
         clickButton(By.xpath("//*[@class ='_2AkmmA _29YdH8']"));
         hooverOver(By.xpath("//*[@class = '_1QZ6fC _3Lgyp8']"));

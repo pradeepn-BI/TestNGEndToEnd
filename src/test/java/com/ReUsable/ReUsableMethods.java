@@ -55,11 +55,6 @@ public class ReUsableMethods extends Base {
 
     }
 
-    public static void handlePopWindow() {
-
-        driver.switchTo().alert().accept();
-    }
-
     public static void scrollToElement(By locatorname) {
             Text = driver.findElement(locatorname);
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Text);

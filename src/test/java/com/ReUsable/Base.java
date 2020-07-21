@@ -20,9 +20,9 @@ public class Base {
         WebDriverManager.getInstance(CHROME).setup();
         //wait = new WebDriverWait(driver,30);
         driver = new ChromeDriver();
-        //driver.navigate().to("http://automationpractice.com/index.php");
+        driver.navigate().to("http://automationpractice.com/index.php");
         //driver.navigate().to("https://www.ebay.co.uk/");
-        driver.navigate().to("https://www.flipkart.com/");
+        //driver.navigate().to("https://www.flipkart.com/");
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
