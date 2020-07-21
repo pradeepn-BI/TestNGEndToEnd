@@ -30,6 +30,12 @@ public class ReUsableMethods extends Base {
 
     }
 
+    public static String readValueInfeild(By locatorname,String AttributeValue){
+        System.out.println(driver.findElement(locatorname).getAttribute(AttributeValue));
+        return driver.findElement(locatorname).getAttribute(AttributeValue);
+
+    }
+
 
     public static void clickButton(By locatorname) {
         driver.findElement(locatorname).click();
@@ -122,6 +128,9 @@ public class ReUsableMethods extends Base {
         toClear.sendKeys(Keys.DELETE);
 
     }
+
+
+
 }
 
 

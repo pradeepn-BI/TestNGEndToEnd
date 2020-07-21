@@ -36,7 +36,7 @@ public class Base {
         return driver.getTitle();
     }
 
-   //@AfterTest
+   @AfterTest
     public static void tearDown() {
         driver.quit();
     }

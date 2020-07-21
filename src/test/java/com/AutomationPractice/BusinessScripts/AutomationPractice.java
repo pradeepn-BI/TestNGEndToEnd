@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static java.lang.Integer.parseInt;
+
 public class AutomationPractice extends ReUsableMethods {
 
 
@@ -18,11 +20,17 @@ public class AutomationPractice extends ReUsableMethods {
         hooverOver(By.xpath(Locators.DRESSES));
         ClickHyperLink(By.xpath(Locators.EVENING_DRESSES));
         hooverOver(By.xpath(Locators.EVEDRESS));
-        clickButton(By.xpath("//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[1]/span"));
+       clickButton(By.xpath("//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[1]/span"));
         clickButton(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a/span"));
         getDisplayedMessage(By.xpath("//*[@class = 'cart_quantity_input form-control grey']"));
-
-
+        waitTillLoad();
+       scrollToElement(By.xpath("//*[@class = 'label label-success']"));
+        clickButton(By.xpath("//*[@class ='icon-plus']"));
+        if (parseInt(readValueInfeild(By.xpath("//*[@class = 'cart_quantity_input form-control grey']"), "value")) > 1) {
+            clickButton(By.xpath("//*[@class = 'icon-minus']"));
+        }else if (parseInt(readValueInfeild(By.xpath("//*[@class = 'cart_quantity_input form-control grey']"), "value")) > 1){
+            clickButton(By.xpath(""));
+        }else ClickHyperLink(By.linkText("Proceed to checkout"));
     }
 
 
